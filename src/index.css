@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Portfolio Design System - Neural Network Theme */
+
+@layer base {
+  :root {
+    /* Core Cyberpunk Color Palette */
+    --background: 225 39% 7%;          /* Deep Space Blue #0A0A23 */
+    --foreground: 0 0% 92%;            /* Light Gray #EAEAEA */
+
+    --card: 225 39% 7%;                /* Deep Space Blue */
+    --card-foreground: 0 0% 92%;
+
+    --popover: 225 39% 12%;            /* Slightly lighter space blue */
+    --popover-foreground: 0 0% 92%;
+
+    --primary: 195 100% 50%;           /* Electric Cyan #00BFFF */
+    --primary-foreground: 225 39% 7%;
+
+    --secondary: 300 100% 47%;         /* Neon Magenta #F000FF */
+    --secondary-foreground: 0 0% 92%;
+
+    --muted: 225 39% 15%;              /* Muted space blue */
+    --muted-foreground: 0 0% 75%;
+
+    --accent: 195 100% 50%;            /* Electric Cyan */
+    --accent-foreground: 225 39% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 39% 20%;             /* Border color */
+    --input: 225 39% 15%;              /* Input background */
+    --ring: 195 100% 50%;              /* Electric Cyan ring */
+
+    --radius: 0.75rem;
+
+    /* Custom Cyberpunk Colors */
+    --neural-primary: 195 100% 50%;    /* Electric Cyan */
+    --neural-secondary: 300 100% 47%;  /* Neon Magenta */
+    --neural-glow: 195 100% 65%;       /* Lighter cyan for glow */
+    --neural-dark: 225 39% 5%;         /* Even darker background */
+    --neural-surface: 225 39% 12%;     /* Card/surface color */
+    
+    /* Gradients */
+    --gradient-neural: linear-gradient(135deg, 
+      hsl(var(--neural-primary)) 0%, 
+      hsl(var(--neural-secondary)) 100%);
+    --gradient-glow: linear-gradient(135deg,
+      hsl(var(--neural-primary) / 0.3) 0%,
+      hsl(var(--neural-secondary) / 0.3) 100%);
+    --gradient-surface: linear-gradient(135deg,
+      hsl(var(--neural-surface)) 0%,
+      hsl(var(--neural-dark)) 100%);
+
+    /* Shadows & Effects */
+    --shadow-neural: 0 10px 30px -10px hsl(var(--neural-primary) / 0.3);
+    --shadow-glow: 0 0 40px hsl(var(--neural-glow) / 0.4);
+    --shadow-card: 0 20px 40px -20px hsl(var(--neural-primary) / 0.2);
+    
+    /* Text Effects */
+    --text-glow: 0 0 10px hsl(var(--neural-primary) / 0.8);
+    --text-glow-strong: 0 0 20px hsl(var(--neural-primary) / 1);
+    
+    /* Animations */
+    --transition-neural: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.3s ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Neural Network Typography */
+  .neural-heading {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    color: hsl(var(--foreground));
+    text-shadow: var(--text-glow);
+    letter-spacing: 0.05em;
+  }
+
+  .neural-subheading {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    color: hsl(var(--neural-primary));
+    text-shadow: var(--text-glow);
+    letter-spacing: 0.03em;
+  }
+
+  .neural-text {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 400;
+    color: hsl(var(--muted-foreground));
+    line-height: 1.6;
+  }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    background: linear-gradient(135deg, 
+      hsl(var(--neural-surface) / 0.8) 0%,
+      hsl(var(--neural-dark) / 0.6) 100%);
+    border: 1px solid hsl(var(--neural-primary) / 0.3);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-neural);
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--neural-primary) / 0.6);
+    box-shadow: var(--shadow-glow), var(--shadow-card);
+    transform: translateY(-5px);
+  }
+
+  /* Neural Button */
+  .neural-button {
+    background: var(--gradient-neural);
+    color: hsl(var(--background));
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: var(--transition-glow);
+    text-shadow: none;
+    letter-spacing: 0.02em;
+  }
+
+  .neural-button:hover {
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.05);
+  }
+
+  /* Neural Link */
+  .neural-link {
+    color: hsl(var(--neural-primary));
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition-glow);
+    position: relative;
+  }
+
+  .neural-link:hover {
+    color: hsl(var(--neural-glow));
+    text-shadow: var(--text-glow);
+  }
+
+  .neural-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--gradient-neural);
+    transition: var(--transition-glow);
+  }
+
+  .neural-link:hover::after {
+    width: 100%;
+  }
+
+  /* Particle Container */
+  .particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  /* Timeline */
+  .timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid hsl(var(--neural-primary) / 0.3);
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: hsl(var(--neural-primary));
+    box-shadow: var(--shadow-glow);
+  }
+
+  .timeline-item:last-child {
+    border-left-color: transparent;
+  }
+
+  /* Social Icon */
+  .social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: hsl(var(--neural-surface));
+    border: 2px solid hsl(var(--neural-primary) / 0.3);
+    color: hsl(var(--neural-primary));
+    transition: var(--transition-neural);
+    text-decoration: none;
+  }
+
+  .social-icon:hover {
+    border-color: hsl(var(--neural-primary));
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.1) rotate(5deg);
+    color: hsl(var(--neural-glow));
+  }
+
+  /* Skill Tag */
+  .skill-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: hsl(var(--neural-primary) / 0.1);
+    border: 1px solid hsl(var(--neural-primary) / 0.3);
+    border-radius: 9999px;
+    color: hsl(var(--neural-primary));
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin: 0.25rem;
+    transition: var(--transition-glow);
+  }
+
+  .skill-tag:hover {
+    background: hsl(var(--neural-primary) / 0.2);
+    border-color: hsl(var(--neural-primary));
+    box-shadow: 0 0 10px hsl(var(--neural-primary) / 0.5);
+  }
+}
+
+@layer utilities {
+  /* Animation Classes */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-typing {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--neural-primary));
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink 0.75s step-end infinite;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    background: var(--gradient-neural);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow Effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-border {
+    border: 1px solid hsl(var(--neural-primary) / 0.5);
+    box-shadow: 0 0 20px hsl(var(--neural-primary) / 0.3);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: var(--text-glow);
+  }
+  to {
+    text-shadow: var(--text-glow-strong);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: hsl(var(--neural-primary));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

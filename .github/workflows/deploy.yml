@@ -27,7 +27,7 @@ jobs:
 
   deploy:
     environment:
-      name: github-pages   # 👈 bắt buộc phải có
+      name: gh-pages   # 👈 bắt buộc phải có
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
